@@ -1,4 +1,4 @@
-import { carProps } from "@/Types";
+import { carProps, FilterProps } from "@/Types";
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
@@ -15,10 +15,11 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   return rentalRatePerDay.toFixed(0);
 };
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
   try {
-    const name = 'corolla';  // Adjust as needed
-    const url = `https://api.api-ninjas.com/v1/cars?model=${name}`;
+    const { manufacturer, year, model, limit, fuel } = filters;
+    const name = 'Carrera';  // Adjust as needed
+    const url = `https://api.api-ninjas.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -33,7 +34,6 @@ export async function fetchCars() {
     }
 
     const result = await response.json();
-    console.log(result);
     return result;
 
   } catch (error) {
@@ -47,9 +47,9 @@ export const generateCarImageUrl = (car: carProps, angle?: string) => {
   const { make, year, model } = car;
   url.searchParams.append('customer', 'hrjavascript-mastery');
   url.searchParams.append('make', make);
-  url.searchParams.append('model', model.split(' ')[0]);
+  url.searchParams.append('modelFamily', model.split(' ')[0]);
   url.searchParams.append('zoomType', 'fullscreen');
   url.searchParams.append('modelYear', `${year}`);
-  url.searchParams.append('angel', `${angle}`);
+  url.searchParams.append('angle', `${angle}`);
   return `${url}`;
 }
