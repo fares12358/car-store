@@ -5,15 +5,15 @@ export interface customButtonProps {
   containerStyles?: string;
   handleClick?: MouseEventHandler<HTMLButtonElement>;
   btnType?: 'button' | 'submit';
-  textStyles?:'string';
+  textStyles?:string;
   rightIcon?:string;
   isDisabled?:boolean;
 }
 
 
 export interface SearchManufactureProps {
-  manufacture: string;
-  setManufacture: (manufacture: string) => void;
+  selected: string;
+  setSelected: (selected: string) => void;
 }
 
 export interface carProps{
@@ -37,4 +37,21 @@ export interface FilterProps{
   fuel: string;
   limit:number;
   model:string;
+}
+
+export interface OptionProps{
+  title:string;
+  value:string;
+}
+
+export interface CustomFilterProps{
+  title:string;
+  options:OptionProps[];
+  setFilter:any;
+}
+
+export interface ShowMoreProps {
+  pageNumber:number;
+  isNext:boolean;
+  setLimit:any;
 }

@@ -16,43 +16,45 @@ const SearchButton = ({ otherClasses }: { otherClasses: string }) => {
     </button>
   )
 }
-const SearchBar = () => {
+const SearchBar = ({setManufacturer,setModel}:any) => {
   const router = useRouter();
-  const [manufacture, setManufacture] = useState('');
-  const [model, setModel] = useState('');
+  const [SearchManufacturer, setSearchManufacturer] = useState('');
+  const [SearchModel, setSearchModel] = useState('');
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (manufacture === '' && model === '') {
+    if (SearchManufacturer === '' && SearchModel === '') {
       return alert('please fill in the search bar')
     }
-    updateSearchParams(model.toLowerCase(), manufacture.toLowerCase())
 
+    setModel(SearchModel)
+    setManufacturer(SearchManufacture)
   }
-  const updateSearchParams = (model: string, manufacture: string) => {
-    const searchParams = new URLSearchParams(window.location.search);
-    if (model) {
-      searchParams.set('model', model)
-    }
-    else {
-      searchParams.delete('model')
-    }
 
-    if (manufacture) {
-      searchParams.set('manufacture', manufacture)
-    }
-    else {
-      searchParams.delete('manufacture')
-    }
+  // const updateSearchParams = (model: string, manufacture: string) => {
+  //   const searchParams = new URLSearchParams(window.location.search);
+  //   if (model) {
+  //     searchParams.set('model', model)
+  //   }
+  //   else {
+  //     searchParams.delete('model')
+  //   }
 
-    const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+  //   if (manufacture) {
+  //     searchParams.set('manufacture', manufacture)
+  //   }
+  //   else {
+  //     searchParams.delete('manufacture')
+  //   }
 
-    router.push(newPathName)
-  }
+  //   const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+
+  //   router.push(newPathName)
+  // }
 
   return (
     <form className='searchbar' onSubmit={handleSearch}>
       <div className="searchbar__item">
-        <SearchManufacture manufacture={manufacture} setManufacture={setManufacture} />
+        <SearchManufacture selected={SearchManufacturer} setSelected={setSearchManufacturer} />
         <SearchButton otherClasses="sm:hidden" />
       </div>
       <div className="searchbar__item">
@@ -63,7 +65,7 @@ const SearchBar = () => {
           className="absolute w-[20px] h-[20px] ml-4"
           alt="car model"
         />
-        <input type="text" name="model" value={model} onChange={(e) => { setModel(e.target.value) }} placeholder="Tiguan" className="searchbar__input" />
+        <input type="text" name="model" value={SearchModel} onChange={(e) => { setSearchModel(e.target.value) }} placeholder="Tiguan" className="searchbar__input" />
         <SearchButton otherClasses="sm:hidden" />
       </div>
       <SearchButton otherClasses="max-sm:hidden" />

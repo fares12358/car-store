@@ -7,7 +7,8 @@ import CustomFilter from "./CustomFilter";
 import SearchManufacture from "./SearchManufacture";
 import CarCard from "./CarCard";
 import CarDetails from "./CarDetails";
-export{
+import ShowMore from "./ShowMore";
+export {
   Hero,
   CustomButton,
   Navbar,
@@ -17,4 +18,5 @@ export{
   SearchManufacture,
   CarCard,
   CarDetails,
+  ShowMore,
 }

@@ -18,7 +18,6 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 export async function fetchCars(filters: FilterProps) {
   try {
     const { manufacturer, year, model, limit, fuel } = filters;
-    const name = 'Carrera';  // Adjust as needed
     const url = `https://api.api-ninjas.com/v1/cars?make=${manufacturer}&year=${year}&model=${model}&limit=${limit}&fuel_type=${fuel}`;
     const response = await fetch(url, {
       method: 'GET',
@@ -52,4 +51,12 @@ export const generateCarImageUrl = (car: carProps, angle?: string) => {
   url.searchParams.append('modelYear', `${year}`);
   url.searchParams.append('angle', `${angle}`);
   return `${url}`;
+}
+
+export const updateSearchParams = (type: string, value: string) => {
+
+  const searchParams = new URLSearchParams(window.location.search);
+  searchParams.set(type, value)
+  const newPathName = `${window.location.pathname}?${searchParams.toString()}`
+  return newPathName;
 }
