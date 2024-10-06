@@ -6,7 +6,7 @@ import Image from "next/image";
 import CustomButton from "./CustomButton";
 import CarDetails from "./CarDetails";
 import { calculateCarRent } from "../../utils";
-import { carProps } from "@/Types";
+import { carProps } from "../Types";
 
 interface CarCardProps {
   car: carProps;

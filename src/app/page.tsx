@@ -1,9 +1,9 @@
 'use client';
-import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "@/Components";
-import { fetchCars } from "../../utils";
 import { fuels, yearsOfProduction } from "../../constants";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { fetchCars } from "@/utils";
+import { CarCard, CustomFilter, Hero, SearchBar, ShowMore } from "./Components";
 
 export default function Home() {
   const [allCars, setAllCars] = useState([]);

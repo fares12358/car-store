@@ -1,9 +1,9 @@
 'use client'
 import React from 'react';
 import { useRouter } from 'next/navigation'
-import { ShowMoreProps } from '@/Types';
 import { CustomButton } from '.';
 import { updateSearchParams } from '../../utils';
+import { ShowMoreProps } from '../Types';
 
 const ShowMore = ({ pageNumber, isNext,setLimit }: ShowMoreProps) => {
   // const router = useRouter();

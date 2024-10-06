@@ -1,8 +1,8 @@
 
 "use client";
 
-import { customButtonProps } from "@/Types";
 import Image from "next/image";
+import { customButtonProps } from "../Types";
 
 
 

@@ -2,7 +2,7 @@
 import React, { Fragment, useState } from 'react';
 import Image from 'next/image';
 import { Listbox, Transition } from '@headlessui/react';
-import { CustomFilterProps } from '@/Types';
+import { CustomFilterProps } from '../Types';
 
 const CustomFilter = ({ title, options, setFilter }: CustomFilterProps ) => {
   const [selected, setSelected] = useState(options[0]);
