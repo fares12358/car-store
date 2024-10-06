@@ -1,4 +1,4 @@
-import { carProps, FilterProps } from "@/Types";
+import { carProps, FilterProps } from "@/app/Types";
 
 export const calculateCarRent = (city_mpg: number, year: number) => {
   const basePricePerDay = 50; // Base rental price per day in dollars
